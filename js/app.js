@@ -52,10 +52,9 @@ HornImage.filterSelected = () => {
     let selection = $(this).val();
     if(selection !== 'Filter By Keyword') {
       $('div').hide();
-      console.log(selection);
+      $('div').removeClass('selected');
       HornImage.all.forEach(image => {
         if(image.keyword === selection) {
-          console.log('true');
           $(`div[class="${selection}"]`).addClass('selected').fadeIn();
         }
       });
