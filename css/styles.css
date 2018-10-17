@@ -7,8 +7,8 @@ html, body {
 }
 
 body {
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
 }
 
 /* header, footer {
@@ -42,6 +42,21 @@ h1 {
   text-align: center;
 }
 
+h2, p {
+  text-align: center;
+  font-family: Helvetica;
+}
+
+h2 {
+  font-size: 1.5em;
+  margin-bottom: 0.3em;
+}
+
+p {
+  font-style: italic;
+  margin-top: 0.3em;
+}
+
 div {
   -webkit-box-shadow: 0 10px 6px -6px #777;
   -moz-box-shadow: 0 10px 6px -6px #777;
@@ -49,6 +64,7 @@ div {
   border: 2px inset lightGray;
   padding: 0.5em 2em;
   width: 20em;
+  height: 20em;
   margin: 3em;
 }
 
