@@ -11,14 +11,15 @@ function Image(item) {
 }
 
 Image.prototype.render = function() {
-  $('main').append('<div class="clone"></div>');
-  let templateClone = $('div[class="clone"]');
-  templateClone.html($('#photo-template').html());
-  templateClone.find('h2').text(this.title);
-  templateClone.find('img').attr('src', this.image_url);
-  templateClone.find('p').text(this.description);
-  templateClone.attr('class', this.keyword);
-  templateClone.removeClass('clone');
+  $('main').append('<div class="image-container"></div>');
+  let $imageContainer = $('div[class="image-container"]');
+  $imageContainer.html($('#photo-template').html());
+  $imageContainer.find('h2').text(this.title);
+  $imageContainer.find('img').attr('src', this.image_url);
+  $imageContainer.find('p').text(this.description);
+  $imageContainer.removeClass('image-container');
+  console.log($imageContainer);
+
 }
 
 Image.requestData = () => {
