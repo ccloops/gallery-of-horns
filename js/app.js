@@ -1,8 +1,8 @@
 'use strict';
 
-Image.all = [];
+HornImage.all = [];
 
-function Image(item) {
+function HornImage(item) {
   this.image_url = item.image_url;
   this.title = item.title;
   this.description = item.description;
@@ -10,7 +10,7 @@ function Image(item) {
   this.horns = item.horns;
 }
 
-Image.prototype.render = function() {
+HornImage.prototype.render = function() {
   $('main').append('<div class="image-container"></div>');
   let $imageContainer = $('div[class="image-container"]');
   $imageContainer.html($('#photo-template').html());
@@ -18,29 +18,27 @@ Image.prototype.render = function() {
   $imageContainer.find('img').attr('src', this.image_url);
   $imageContainer.find('p').text(this.description);
   $imageContainer.removeClass('image-container');
-  console.log($imageContainer);
-
 }
 
-Image.requestData = () => {
+HornImage.requestData = () => {
   $.get('../data/page-1.json')
   .then(data => {
       data.forEach(item => {
-        Image.all.push(new Image(item));
+        HornImage.all.push(new HornImage(item));
       });
 
-    Image.all.forEach(image => {
+    HornImage.all.forEach(image => {
       $('main').append(image.render());
     })
-Image.populateFilters();
-    
+    HornImage.populateFilters();
   })
+  .then(HornImage.filterSelected);
 }
 
-Image.populateFilters = () => {
+HornImage.populateFilters = () => {
   let selectedItems = [];
 
-  Image.all.forEach(image => {
+  HornImage.all.forEach(image => {
     if(!selectedItems.includes(image.keyword)) {
       selectedItems.push(image.keyword);
       $('select').append(`<option>${image.keyword}</option>`)
@@ -48,5 +46,21 @@ Image.populateFilters = () => {
   })
 }
 
+HornImage.filterSelected = () => {
+  $('select').on('change', function() {
+    let selection = $(this).val();
+    if(selection !== 'Filter By Keyword') {
+      $('div').hide();
+      console.log(selection);
+      HornImage.all.forEach(image => {
+        if(image.keyword === selection) {
+          $(`div[class="${selection}"]`).addClass('selected').fadeIn();
+        }
+      });
+      $(`option[value="${selection}"]`).fadeIn();
+    }
+  });
 
-$(() => Image.requestData());
+}
+
+$(() => HornImage.requestData());
