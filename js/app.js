@@ -22,7 +22,7 @@ HornImage.prototype.render = function() {
 }
 
 HornImage.requestData = () => {
-  $.get('../data/page-1.json')
+  $.get('./data/page-1.json')
   .then(data => {
       data.forEach(item => {
         HornImage.all.push(new HornImage(item));
