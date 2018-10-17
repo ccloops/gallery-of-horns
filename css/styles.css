@@ -3,7 +3,7 @@
 }
 
 main {
-  display: flex;
+  /* display: flex; */
 }
 
 img {
@@ -13,6 +13,5 @@ img {
 }
 
 .selected {
-  display: flex;
-  border: 2px solid red;
+   display: inline-block;
 }

@@ -17,6 +17,7 @@ HornImage.prototype.render = function() {
   $imageContainer.find('h2').text(this.title);
   $imageContainer.find('img').attr('src', this.image_url);
   $imageContainer.find('p').text(this.description);
+  $imageContainer.attr('class', this.keyword);
   $imageContainer.removeClass('image-container');
 }
 
@@ -54,6 +55,7 @@ HornImage.filterSelected = () => {
       console.log(selection);
       HornImage.all.forEach(image => {
         if(image.keyword === selection) {
+          console.log('true');
           $(`div[class="${selection}"]`).addClass('selected').fadeIn();
         }
       });
