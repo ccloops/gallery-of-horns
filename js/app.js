@@ -50,7 +50,7 @@ HornImage.populateFilters = () => {
 HornImage.filterSelected = () => {
   $('select').on('change', function() {
     let selection = $(this).val();
-    if(selection !== 'Filter By Keyword') {
+    if(selection !== 'filter by keyword') {
       $('div').hide();
       $('div').removeClass('selected');
       HornImage.all.forEach(image => {
