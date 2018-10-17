@@ -1,0 +1,13 @@
+* {
+  box-sizing: border-box;
+}
+
+main {
+  display: flex;
+}
+
+img {
+  object-fit: contain;
+  height: 10em;
+  width: 10em;
+}
